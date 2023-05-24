@@ -1,6 +1,7 @@
 package entidades;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import entidades.enums.NivelTrabalhador;
@@ -33,11 +34,27 @@ public class Trabalhador {
 	public void removerContrato(HoraContrato contrato) {
 		contratos.remove(contrato);
 	}
-	
-	public Double totalValor(Integer ano , Integer mes) {
-		
-		return salarioBase;
-		
+
+	public Double totalValor(Integer ano, Integer mes) {
+
+		double soma = salarioBase;
+		Calendar calendario = Calendar.getInstance();
+
+		// Percorre a lista de contratos para achar os contratos do mes e ano passados
+		// como parametro do método:
+		for (HoraContrato c : contratos) {
+			// pega a data do contrato e seta ela como data do calendario:
+			calendario.setTime(c.getData());
+			int c_ano = calendario.get(Calendar.YEAR);
+			int c_mes = 1 + calendario.get(Calendar.MONTH);
+
+			if (c_ano == ano && c_mes == mes) {
+				soma += c.valorTotal();
+			}
+		}
+
+		return soma;
+
 	}
 
 	public String getNome() {
@@ -75,7 +92,5 @@ public class Trabalhador {
 	public List<HoraContrato> getContratos() {
 		return contratos;
 	}
-	
-	
 
 }
