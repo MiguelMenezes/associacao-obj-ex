@@ -22,14 +22,14 @@ public class Programa {
 		System.out.println("Informe o nome do departamento: ");
 		String nomeDepto = sc.nextLine();
 
-		System.out.print("DADOS DO TRABALHADOR:");
+		System.out.println("DADOS DO TRABALHADOR:");
 		System.out.print("NOME: ");
 		String nomeTrabalhador = sc.nextLine();
 
 		System.out.print("NÍVEL: ");
 		String nivelTrabalhador = sc.nextLine();
 
-		System.out.println("SALÁRIO BASE R$: ");
+		System.out.print("SALÁRIO BASE R$: ");
 		double salarioBase = sc.nextDouble();
 
 		Trabalhador trabalhador = new Trabalhador(nomeTrabalhador, NivelTrabalhador.valueOf(nivelTrabalhador),
@@ -65,7 +65,7 @@ public class Programa {
 		
 		System.out.println("NOME: " + trabalhador.getNome());
 		System.out.println("DEPARTAMENTO: " + trabalhador.getDepartamento().getNome());
-		System.out.println("TOTAL RECEBIDO EM " + mesAno + "R$: " + trabalhador.totalValor(ano, mes));
+		System.out.println("TOTAL RECEBIDO EM " + mesAno + ", foi de R$: " + trabalhador.totalValor(ano, mes));
 		
 
 		sc.close();
